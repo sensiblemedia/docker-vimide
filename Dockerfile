@@ -31,12 +31,12 @@ RUN mkdir /etc/vim/bundle
 RUN git clone http://github.com/gmarik/vundle.git /etc/vim/bundle/vundle
 
 #Install Plugins
-RUN wget -P /etc/vim  https://raw.githubusercontent.com/afromavens/docker-vimide/master/vimrc/vimrc_vundle_plugins.local 
+RUN wget -P /etc/vim  https://raw.githubusercontent.com/sensiblemedia/docker-vimide/master/vimrc/vimrc_vundle_plugins.local 
 RUN echo "source /etc/vim/vimrc_vundle_plugins.local" >> /etc/vim/vimrc
 RUN vim -c 'PluginInstall' -c 'qall' -c 'qa!'
 
 #Configure the Plugins
-RUN wget -P /etc/vim  https://raw.githubusercontent.com/afromavens/docker-vimide/master/vimrc/vimrc_vundle_configure_plugins.local 
+RUN wget -P /etc/vim  https://raw.githubusercontent.com/sensiblemedia/docker-vimide/master/vimrc/vimrc_vundle_configure_plugins.local 
 RUN echo "source /etc/vim/vimrc_vundle_configure_plugins.local" >> /etc/vim/vimrc
 
 ENTRYPOINT ["/usr/bin/vim"]
